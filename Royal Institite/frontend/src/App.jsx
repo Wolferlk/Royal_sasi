@@ -6,7 +6,7 @@ import Student from './pages/student';
 
 const App = () => {
   return (
-    <Router>
+    // <Router>
       <div>
         <div className="container">
           <h1>Temp page</h1><br/>
@@ -18,14 +18,14 @@ const App = () => {
 
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/" className="navbar-brand">React CRUD Sample</Link>
+            <Link to="/" className="navbar-brand">Royal Institue</Link>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <Link to="/student" className="nav-link">Student</Link>
+                  <Link to="/" className="nav-link">Student</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/manager" className="nav-link">Manager</Link>
+                  <Link to="/" className="nav-link">Manager</Link>
                 </li>
               </ul>
             </div>
@@ -37,7 +37,7 @@ const App = () => {
           <Route path="/student" element={<Student />} />
         </Routes>
       </div>
-    </Router>
+    // </Router>
   );
 };
 
