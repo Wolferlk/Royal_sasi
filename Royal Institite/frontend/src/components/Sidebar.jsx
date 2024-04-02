@@ -2,36 +2,63 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './sidebar.scss';
 
+const hig = 0;
+
 const sidebarNavItems = [
+    
+
     {
         display: 'Dashboard',
         icon: <i className='bx bx-home'></i>,
-        to: '/',
-        section: ''
+        to: './pages/manager',
+        section: 'Dashboard',
+        hig : 0 
+        
     },
     {
-        display: 'Getting Started',
+        display: 'Additional Class',
         icon: <i className='bx bx-star'></i>,
         to: '/started',
         section: 'started'
     },
     {
-        display: 'Calendar',
-        icon: <i className='bx bx-calendar'></i>,
-        to: '/calendar',
-        section: 'calendar'
+        display: 'Enrollments',
+        icon: <i className='bx '></i>,
+        to: '/manager',
+        section: 'Enroll'
     },
     {
-        display: 'User',
+        display: 'Payments',
         icon: <i className='bx bx-user'></i>,
         to: '/user',
-        section: 'user'
+        section: 'Payments'
     },
     {
-        display: 'Orders',
+        display: 'TimeTable',
         icon: <i className='bx bx-receipt'></i>,
         to: '/order',
-        section: 'order'
+        section: 'TimeTable'
+    },
+    {
+        display: 'Attendance',
+        icon: <i className='bx bx-user'></i>,
+        to: '/user',
+        section: 'Payments'
+    },{
+        display: 'Salary',
+        icon: <i className='bx bx-user'></i>,
+        to: '/user',
+        section: 'Payments'
+    },{
+        display: 'FeedBack',
+        icon: <i className='bx bx-user'></i>,
+        to: '/user',
+        section: 'Payments'
+    },{
+        display: 'Profile',
+        icon: <i className='bx bx-user'></i>,
+        to: '/user',
+        section: 'Payments'
     },
 ]
 
@@ -58,15 +85,14 @@ const Sidebar = () => {
     }, [location]);
 
     return <div className='sidebar'>
-        <div className="sidebar__logo">
-            Animate
-        </div>
+        
         <div ref={sidebarRef} className="sidebar__menu">
             <div
                 ref={indicatorRef}
                 className="sidebar__menu__indicator"
                 style={{
-                    transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`
+                    //transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`
+                    transform: `translateX(-50%) translateY(0px)`
                 }}
             ></div>
             {

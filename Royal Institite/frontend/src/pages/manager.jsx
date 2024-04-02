@@ -9,6 +9,9 @@ import logo from '../assets/headlogo.png';
 import StudentEnrollClasses from '../components/StudentEnrollClasses';
  // Import the Navbar_manager component
  import Sidebar from '../components/Sidebar';
+ import Enroll from '../components/Enroll';
+ 
+
 
 const Students = () => {
   const [students, setStudents] = useState([]);
@@ -42,10 +45,27 @@ const Students = () => {
   };
 
   return (
+    
     <div>
-       {/* Include the Navbar_manager component here */}
-      <img src={logo} alt="Company Logo" />
       
+      
+    <div className='logo'>
+      <img src={logo} alt="Company Logo" />
+    </div> 
+ 
+
+    <div className="grid grid-cols-3 w-500">
+          <Sidebar />
+          </div>
+
+<></>
+          
+      
+
+
+
+
+  <div className='Enroll'>   
       <center>
         <h1 className='text-5xl'>Manage Students Classes Enrollments</h1><br/>
         <p>
@@ -61,7 +81,9 @@ const Students = () => {
           If you have any questions or feedback, please don't hesitate to contact us.
         </p>
       </center>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-3">
+      <Sidebar />
+      <div></div>
           <div className='p-5'>
             <div className='flex justify-between items-center mb-8'>
               <h1 className='text-3xl'>Registered Students</h1>
@@ -117,6 +139,12 @@ const Students = () => {
       </div>
     )}
   </div>
+ 
+ 
+ 
+ 
+  
+</div>
 );
 };
 
