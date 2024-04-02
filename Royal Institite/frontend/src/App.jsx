@@ -1,22 +1,35 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Manager from './pages/manager'; // Assuming you have Manager and Student components
+import logo from './assets/headlogo.png';
+import Manager from './pages/manager'; 
 import Student from './pages/student';
+import teacher from './pages/teacher';
+
+
+
 
 const App = () => {
   return (
     // <Router>
       <div>
-        <div className="container">
-          <h1>Temp page</h1><br/>
-        </div>
+     
+        <div>
 
-        <div className="container">
-          <h2>Royal</h2>
-        </div>
+        
 
-        <div className="container">
+        <div className="container d-flex justify-content-end ">
+        {/* Navigation buttons */}
+        <Link to="/" className="btn btn-primary mr-2">Home</Link>
+        <Link to="/manager" className="btn btn-primary mr-2">Manager</Link>
+        <Link to="/student" className="btn btn-primary mr-2">Student</Link>
+        <Link to="/teacher" className="btn btn-primary">Teacher</Link>
+      </div>
+
+        </div>
+        
+
+        {/* <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand">Royal Institue</Link>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,11 +43,12 @@ const App = () => {
               </ul>
             </div>
           </nav>
-        </div>
+        </div> */}
 
         <Routes>
           <Route path="/manager" element={<Manager />} />
           <Route path="/student" element={<Student />} />
+          <Route path="/teacher" element={<teacher />} />
         </Routes>
       </div>
     // </Router>

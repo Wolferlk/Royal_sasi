@@ -1,8 +1,9 @@
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { Sidenav, Nav } from 'rsuite';
-import DashboardIcon from '@rsuite/icons/legacy/Dashboard';
-import GroupIcon from '@rsuite/icons/legacy/Group';
-import MagicIcon from '@rsuite/icons/legacy/Magic';
-import GearCircleIcon from '@rsuite/icons/legacy/GearCircle';
+import { Dashboard, Group, Magic, GearCircle } from '@rsuite/icons/';
+
+import { DashboardIcon, GroupIcon, MagicIcon, GearCircleIcon } from '@rsuite/icons/legacy';
 
 const styles = {
   width: 240,
@@ -21,13 +22,9 @@ const CustomSidenav = ({ appearance, openKeys, expanded, onOpenChange, onExpand,
       >
         <Sidenav.Body>
           <Nav {...navProps}>
-            <Nav.Item eventKey="1" active icon={<DashboardIcon />}>
-              Dashboard
-            </Nav.Item>
-            <Nav.Item eventKey="2" icon={<GroupIcon />}>
-              User Group
-            </Nav.Item>
-            <Nav.Menu eventKey="3" title="Advanced" icon={<MagicIcon />}>
+            <Nav.Item eventKey="1" active icon={<DashboardIcon />}>Dashboard</Nav.Item>
+            <Nav.Item eventKey="2" icon={<GroupIcon />}>User Group</Nav.Item>
+            <Nav.Menu eventKey="3" title="Advanced" icon={<Magic />}>
               <Nav.Item eventKey="3-1">Geo</Nav.Item>
               <Nav.Item eventKey="3-2">Devices</Nav.Item>
               <Nav.Item eventKey="3-3">Loyalty</Nav.Item>
@@ -44,7 +41,6 @@ const CustomSidenav = ({ appearance, openKeys, expanded, onOpenChange, onExpand,
             </Nav.Menu>
           </Nav>
         </Sidenav.Body>
-        
         <Sidenav.Toggle onToggle={onExpand} />
       </Sidenav>
     </div>
@@ -52,39 +48,26 @@ const CustomSidenav = ({ appearance, openKeys, expanded, onOpenChange, onExpand,
 };
 
 const App = () => {
-  const [activeKey, setActiveKey] = React.useState('1');
-  const [openKeys, setOpenKeys] = React.useState(['3', '4']);
-  const [expanded, setExpand] = React.useState(true);
+  const [activeKey, setActiveKey] = useState('1');
+  const [openKeys, setOpenKeys] = useState(['3', '4']);
+  const [expanded, setExpand] = useState(true);
 
   return (
     <>
-      <CustomSidenav
-        activeKey={activeKey}
-        openKeys={openKeys}
-        onSelect={setActiveKey}
-        onOpenChange={setOpenKeys}
-        expanded={expanded}
-        onExpand={setExpand}
-      />
-      <CustomSidenav
-        activeKey={activeKey}
-        openKeys={openKeys}
-        onOpenChange={setOpenKeys}
-        onSelect={setActiveKey}
-        expanded={expanded}
-        onExpand={setExpand}
-        appearance="inverse"
-      />
-      <CustomSidenav
-        activeKey={activeKey}
-        openKeys={openKeys}
-        onOpenChange={setOpenKeys}
-        onSelect={setActiveKey}
-        expanded={expanded}
-        onExpand={setExpand}
-        appearance="subtle"
-      />
+      {[undefined, 'inverse', 'subtle'].map((appearance, index) => (
+        <CustomSidenav
+          key={index}
+          appearance={appearance}
+          activeKey={activeKey}
+          openKeys={openKeys}
+          onSelect={setActiveKey}
+          onOpenChange={setOpenKeys}
+          expanded={expanded}
+          onExpand={setExpand}
+        />
+      ))}
     </>
   );
 };
+
 ReactDOM.render(<App />, document.getElementById('root'));

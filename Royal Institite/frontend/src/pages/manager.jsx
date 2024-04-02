@@ -2,13 +2,19 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Spinner from '../components/Spinner';
 import { Link } from 'react-router-dom';
-import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
-import { BsHighlighter, BsInfoCircle } from 'react-icons/bs';
-import { AiOutlineEdit } from 'react-icons/ai';
+import { MdOutlineAddBox } from 'react-icons/md';
+import { BsInfoCircle } from 'react-icons/bs';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from '../assets/headlogo.png';
+import StudentEnrollClasses from '../components/StudentEnrollClasses';
+ // Import the Navbar_manager component
+ import Sidebar from '../components/Sidebar';
 
 const Students = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -23,50 +29,95 @@ const Students = () => {
       });
   }, []);
 
+  const filteredStudents = students.filter(student =>
+    student.name.toLowerCase().includes(searchQuery.toLowerCase() 
+  ));
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleStudentClick = (studentId) => {
+    setSelectedStudent(studentId);
+  };
+
   return (
-    <div className='p-4'>
-      <div className='flex justify-between items-center mb-8'>
-        <h1 className='text-3xl'>Registered Students</h1>
-        <Link to='/student/create'>
-          <MdOutlineAddBox className='text-sky-800 text-4xl' />
-        </Link>
+    <div>
+       {/* Include the Navbar_manager component here */}
+      <img src={logo} alt="Company Logo" />
+      
+      <center>
+        <h1 className='text-5xl'>Manage Students Classes Enrollments</h1><br/>
+        <p>
+          Thank you for visiting our website! We are excited to have you here. Our website
+          aims to provide valuable information and resources to our users.
+        </p>
+        <p>
+          Whether you're a new visitor or returning, we hope you find what you're looking
+          for and have a pleasant experience navigating our site.
+        </p>
+        <p>
+          Feel free to explore our pages and learn more about what we have to offer.
+          If you have any questions or feedback, please don't hesitate to contact us.
+        </p>
+      </center>
+      <div className="grid grid-cols-2">
+          <div className='p-5'>
+            <div className='flex justify-between items-center mb-8'>
+              <h1 className='text-3xl'>Registered Students</h1>
+              <Link to='/student/create'>
+                <MdOutlineAddBox className='text-sky-800 text-4xl' />
+              </Link>
+            </div>
+
+            <div className="mb-5 w-50">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={handleSearchInputChange}
+                placeholder="Search by student name"
+                className="form-control"
+              />
+            </div>
+
+            {loading ? (
+              <Spinner />
+            ) : filteredStudents.length > 0 ? (
+              <table className='w-50 border-separate border-spacing-2'>
+                <thead>
+                  <tr>
+                    <th scope="col" className='border border-slate-600 rounded-md text-center'>Student ID</th>
+                    <th scope="col" className='border border-slate-600 rounded-md text-center'>Student Name</th>
+                    <th scope="col" className='border border-slate-600rounded-md text-center'>View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredStudents.map((student, index) => (
+                    <tr key={student._id} className='h-8'>
+                      <td className='border border-slate-700 rounded-md text-center'>{index +1}</td>
+                      <td className='border border-slate-700 rounded-md text-center'>{student.name}</td>
+                      <td className='border border-slate-700 rounded-md text-center'>
+                        <div className='flex justify-center gap-x-4'>
+                          <BsInfoCircle className='text-2xl text-blue-800' onClick={() => handleStudentClick(student._id)} />
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <div>No students available</div>
+            )}
+          </div>
+        </div>
+
+    {selectedStudent && (
+      <div>
+        <StudentEnrollClasses studentId={selectedStudent} />
       </div>
-      {loading ? (
-        <Spinner />
-      ) : students.length > 0 ? (
-        <table className='w-full border-separate border-spacing-2'>
-          <thead>
-            <tr>
-              <th scope="col" className='border border-slate-600 rounded-md'>Student ID</th>
-              <th scope="col" className='border border-slate-600 rounded-md'>Student Name</th>
-              <th scope="col" className='border border-slate-600 rounded-md'>Operations</th>
-            </tr>
-          </thead>
-          <tbody>
-            {students.map((student, index) => (
-              <tr key={student._id} className='h-8'>
-                <td className='border border-slate-700 rounded-md text-center'>{index + 1}</td>
-                <td className='border border-slate-700 rounded-md text-center'>{student.name}</td>
-                <td className='border border-slate-700 rounded-md text-center'>
-                  <div className='flex justify-center gap-x-4'>
-                    <Link to={`student/details/${student._id}`}>
-                      <BsInfoCircle className='text-2xl text-blue-800' />
-                    </Link>
-                    <Link to={`student/edit/${student._id}`}>
-                      <AiOutlineEdit className='text-2xl text-green-600' />
-                    </Link>
-                    <MdOutlineDelete className='text-2xl text-red-600' />
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <div>No students available</div>
-      )}
-    </div>
-  );
+    )}
+  </div>
+);
 };
 
 export default Students;
