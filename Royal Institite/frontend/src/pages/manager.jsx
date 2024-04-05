@@ -10,6 +10,7 @@ import StudentEnrollClasses from '../components/StudentEnrollClasses';
  // Import the Navbar_manager component
  import Sidebar from '../components/Sidebar';
  import Enroll from '../components/Enroll';
+//  import '../sasi.scss';
  
 
 
@@ -54,11 +55,13 @@ const Students = () => {
     </div> 
  
 
-    <div className="grid grid-cols-3 w-500">
+    <div className="grid grid-cols-3 ">
           <Sidebar />
           </div>
 
-<></>
+          
+
+
           
       
 

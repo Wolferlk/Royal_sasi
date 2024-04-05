@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './sidebar.scss';
 
-const hig = 0;
+const  hig = 0;
 
 const sidebarNavItems = [
     
@@ -10,54 +10,56 @@ const sidebarNavItems = [
     {
         display: 'Dashboard',
         icon: <i className='bx bx-home'></i>,
-        to: './pages/manager',
+        // to: './pages/manager',
         section: 'Dashboard',
-        hig : 0 
+        hig : 0 ,
         
     },
     {
         display: 'Additional Class',
         icon: <i className='bx bx-star'></i>,
-        to: '/started',
+        // to: './pages/manager',
+        hig : 65 ,
         section: 'started'
     },
     {
         display: 'Enrollments',
         icon: <i className='bx '></i>,
-        to: '/manager',
-        section: 'Enroll'
+        // to: '/Enroll',
+        section: 'Enroll',
+        hig : "125" ,
     },
     {
         display: 'Payments',
         icon: <i className='bx bx-user'></i>,
-        to: '/user',
+        // to: '/user',
         section: 'Payments'
     },
     {
         display: 'TimeTable',
         icon: <i className='bx bx-receipt'></i>,
-        to: '/order',
+        // to: '/order',
         section: 'TimeTable'
     },
     {
         display: 'Attendance',
         icon: <i className='bx bx-user'></i>,
-        to: '/user',
+        // to: '/user',
         section: 'Payments'
     },{
         display: 'Salary',
         icon: <i className='bx bx-user'></i>,
-        to: '/user',
+        // to: '/user',
         section: 'Payments'
     },{
         display: 'FeedBack',
         icon: <i className='bx bx-user'></i>,
-        to: '/user',
+        // to: '/user',
         section: 'Payments'
     },{
         display: 'Profile',
         icon: <i className='bx bx-user'></i>,
-        to: '/user',
+        // to: '/user',
         section: 'Payments'
     },
 ]
@@ -91,8 +93,9 @@ const Sidebar = () => {
                 ref={indicatorRef}
                 className="sidebar__menu__indicator"
                 style={{
+                    transform: `translateX(-50%) translateY({hig}px)`
                     //transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`
-                    transform: `translateX(-50%) translateY(0px)`
+                     //transform: `translateX(-50%) translateY(125px)`
                 }}
             ></div>
             {

@@ -18,7 +18,7 @@ const App = () => {
 
         
 
-        <div className="container d-flex justify-content-end ">
+        <div className="container d-flex justify-content-end position: fixed">
         {/* Navigation buttons */}
         <Link to="/" className="btn btn-primary mr-2">Home</Link>
         <Link to="/manager" className="btn btn-primary mr-2">Manager</Link>
