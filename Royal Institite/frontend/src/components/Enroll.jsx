@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Spinner from '../components/Spinner';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddBox } from 'react-icons/md';
 import { BsInfoCircle } from 'react-icons/bs';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../assets/headlogo.png';
+import './sasi.scss';
+ 
+
 import StudentEnrollClasses from '../components/StudentEnrollClasses';
  // Import the Navbar_manager component
  import Sidebar from '../components/Sidebar';
@@ -47,6 +49,7 @@ import student from '../pages/student';
         <div>
    
           <center>
+            
             <h1 className='text-5xl'>Manage Students Classes Enrollments</h1><br/>
             <p>
               Thank you for visiting our website! We are excited to have you here. Our website
@@ -61,9 +64,19 @@ import student from '../pages/student';
               If you have any questions or feedback, please don't hesitate to contact us.
             </p>
           </center>
+
           <div className="grid grid-cols-3">
-          <Sidebar />
-          <div></div>
+
+
+
+
+
+          <div>
+
+
+          </div>
+
+          
               <div className='p-5'>
                 <div className='flex justify-between items-center mb-8'>
                   <h1 className='text-3xl'>Registered Students</h1>

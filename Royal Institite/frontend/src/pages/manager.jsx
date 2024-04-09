@@ -10,8 +10,9 @@ import StudentEnrollClasses from '../components/StudentEnrollClasses';
  // Import the Navbar_manager component
  import Sidebar from '../components/Sidebar';
  import Enroll from '../components/Enroll';
-//  import '../sasi.scss';
- 
+ import StudentCardEnroll from '../components/StudentCardEnroll';
+ import '../components/sasi.scss';
+
 
 
 const Students = () => {
@@ -55,21 +56,17 @@ const Students = () => {
     </div> 
  
 
-    <div className="grid grid-cols-3 ">
+    <div className="grid grid-cols-2 ">
           <Sidebar />
           </div>
 
-          
-
-
-          
-      
 
 
 
 
   <div className='Enroll'>   
       <center>
+        <div className='para'>
         <h1 className='text-5xl'>Manage Students Classes Enrollments</h1><br/>
         <p>
           Thank you for visiting our website! We are excited to have you here. Our website
@@ -83,19 +80,21 @@ const Students = () => {
           Feel free to explore our pages and learn more about what we have to offer.
           If you have any questions or feedback, please don't hesitate to contact us.
         </p>
+        </div>
       </center>
-      <div className="grid grid-cols-3">
+      
       <Sidebar />
-      <div></div>
+      
+
+      <div className="grid grid-cols-3">
+        <div>
           <div className='p-5'>
             <div className='flex justify-between items-center mb-8'>
               <h1 className='text-3xl'>Registered Students</h1>
-              <Link to='/student/create'>
-                <MdOutlineAddBox className='text-sky-800 text-4xl' />
-              </Link>
+             
             </div>
 
-            <div className="mb-5 w-50">
+            <div className="mb-5 w-100">
               <input
                 type="text"
                 value={searchQuery}
@@ -108,7 +107,7 @@ const Students = () => {
             {loading ? (
               <Spinner />
             ) : filteredStudents.length > 0 ? (
-              <table className='w-50 border-separate border-spacing-2'>
+              <table className='w-100 border-separate border-spacing-2'>
                 <thead>
                   <tr>
                     <th scope="col" className='border border-slate-600 rounded-md text-center'>Student ID</th>
@@ -134,7 +133,22 @@ const Students = () => {
               <div>No students available</div>
             )}
           </div>
+          </div>
+
+
+          <div>
+          <div className='studentd'>
+            
+          <StudentCardEnroll />
         </div>
+
+        </div>
+
+        
+
+        </div>
+          
+       
 
     {selectedStudent && (
       <div>
@@ -142,7 +156,7 @@ const Students = () => {
       </div>
     )}
   </div>
- 
+
  
  
  
