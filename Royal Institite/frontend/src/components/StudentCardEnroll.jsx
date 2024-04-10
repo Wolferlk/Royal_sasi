@@ -15,9 +15,11 @@ const StudentCardEnroll = ({ studentId }) => {
         const studentResponse = await axios.get(`http://localhost:5555/student/${studentId}`);
         setStudentData(studentResponse.data.data);
 
-        const enrollResponse = await axios.get(`http://localhost:5555/student/${studentId}/enrollments`);
-        setEnrolledClasses(enrollResponse.data.data);
+        const enrollResponse = await axios.get(`http://localhost:5555/enroll/${studentId}`);
+
+        setEnrolledClasses(enrollResponse.data);
         setLoading(false);
+        console.log(enrolledClasses);
       } catch (error) {
         console.error('Error fetching student data:', error);
         setLoading(false);
@@ -61,7 +63,7 @@ const StudentCardEnroll = ({ studentId }) => {
                   <td colSpan="6">Loading...</td>
                 </tr>
               ) : (
-                enrolledClasses.map((enrollment) => (
+                enrolledClasses?.map((enrollment) => (
                   <tr key={enrollment._id}>
                     <td>{enrollment.class}</td>
                     <td>{enrollment.teacher}</td>

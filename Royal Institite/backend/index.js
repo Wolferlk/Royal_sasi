@@ -3,6 +3,7 @@ import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import { Student } from "./models/studentmodel.js";
 import studentsroute from './routes/studentsroute.js';
+import enroll from './routes/enroll.js';
 import cors from 'cors'; // Import cors package
 
 const app = express();
@@ -17,7 +18,7 @@ app.get('/', (request, response) => {
 
 //new students add
 app.use('/student', studentsroute);
-
+app.use("/enroll", enroll);
 
 mongoose
     .connect(mongoDBURL)

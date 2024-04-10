@@ -19,7 +19,9 @@ const studentSchema = mongoose.Schema({
     }
 }, { timestamps: true }); // Change 'timestamp' to 'timestamps'
 
-export const Student = mongoose.model('Student', studentSchema); // Use uppercase 'Student'
+const Student = mongoose.model('Student', studentSchema); // Use uppercase 'Student'
+
+export { studentSchema, Student };
 
 
 
