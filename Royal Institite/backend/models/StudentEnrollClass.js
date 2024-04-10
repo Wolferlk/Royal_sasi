@@ -1,24 +1,31 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
+import { studentSchema, Student } from "./studentmodel.js";
 
 // Define the schema for the StudentEnrollClass collection
 const studentEnrollClassSchema = new mongoose.Schema({
-  studentId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Student',
-    required: true
+  class: {
+    type: String,
+    require: true,
   },
-  classId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Class',
-    required: true
+
+  teacher: {
+    type: String,
+    require: true,
   },
-  enrollmentDate: {
+
+  date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now(),
+  },
+
+  student: {
+    type: studentSchema,
+    require: true,
+  },
 });
 
 // Create the StudentEnrollClass model
-const StudentEnrollClass = mongoose.model('StudentEnrollClass', studentEnrollClassSchema);
-
-module.exports = StudentEnrollClass;
+export const StudentEnrollClass = mongoose.model(
+  "StudentEnrollClass",
+  studentEnrollClassSchema
+);
