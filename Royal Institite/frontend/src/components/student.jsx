@@ -4,7 +4,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assets/headlogo.png';
 
-const student = () => {
+const MainDescription = () => {
   return (
     <div>
         <div className="container">
@@ -30,4 +30,4 @@ const student = () => {
   );
 }
 
-export default student;
+export default MainDescription;

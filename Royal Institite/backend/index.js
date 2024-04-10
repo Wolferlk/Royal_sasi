@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { Student } from "./models/studentmodel.js";
 import studentsroute from './routes/studentsroute.js';
 import cors from 'cors'; // Import cors package
+import newclass from './routes/classes.js'; 
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.get('/', (request, response) => {
 
 //new students add
 app.use('/student', studentsroute);
-
+app.use('/class', )
 
 mongoose
     .connect(mongoDBURL)

@@ -1,7 +1,19 @@
 import { Router } from "express";
 import { Student } from '../models/studentmodel.js';
+import { StudentEnrollClass } from '../models/StudentEnrollClass.js';
 
 const router = Router();
+
+router.get('/enroll/:id', async (req, res) => {
+
+    const enrolledClass = await StudentEnrollClass.find({
+        "Student._id": req.params.id
+    })
+
+    if(!enrolledClass) return res.send("Student not enrolled for any class");
+
+    res.send(enrolledClass);
+})
 
 router.post('/', async (request, response) => {
     try {
@@ -98,5 +110,6 @@ router.delete('/:id', async (request, response) => {
         response.status(500).send({ message: error.message });
     }
 });
+
 
 export default router;
