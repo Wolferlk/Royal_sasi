@@ -9,7 +9,6 @@ import Sidebar from '../components/Sidebar';
 import '../components/sasi.scss';
 
 const Students = () => {
-
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -36,8 +35,8 @@ const Students = () => {
     setSearchQuery(event.target.value);
   };
 
-  const handleStudentClick = (student) => {
-    setSelectedStudent(student);
+  const handleStudentClick = (studentId) => {
+    setSelectedStudent(studentId);
   };
 
   return (
@@ -70,8 +69,6 @@ const Students = () => {
         </center>
 
         <Sidebar />
-
-        
 
         <div className="grid grid-cols-3">
           <div>
@@ -108,7 +105,7 @@ const Students = () => {
                         <td className='border border-slate-700 rounded-md text-center'>{student.name}</td>
                         <td className='border border-slate-700 rounded-md text-center'>
                           <div className='flex justify-center gap-x-4'>
-                            <BsInfoCircle className='text-2xl text-blue-800' onClick={() => handleStudentClick(student)} />
+                            <BsInfoCircle className='text-2xl text-blue-800' onClick={() => handleStudentClick(student._id)} />
                           </div>
                         </td>
                       </tr>
@@ -123,7 +120,7 @@ const Students = () => {
 
           <div>
             <div className='studentd'>
-              {selectedStudent && <StudentCardEnroll student={selectedStudent} />}
+              {selectedStudent && <StudentCardEnroll studentId={selectedStudent} />}
             </div>
           </div>
         </div>

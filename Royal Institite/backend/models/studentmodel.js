@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const studentSchema = new mongoose.Schema({
+const studentSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -19,10 +19,7 @@ const studentSchema = new mongoose.Schema({
     }
 }, { timestamps: true }); // Change 'timestamp' to 'timestamps'
 
-const Student = mongoose.model("Students", studentSchema);
-
-exports.Student = Student;
-exports.studentSchema = studentSchema;
+export const Student = mongoose.model('Student', studentSchema); // Use uppercase 'Student'
 
 
 

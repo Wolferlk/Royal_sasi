@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Spinner from '../components/Spinner';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MdOutlineAddBox } from 'react-icons/md';
 import { BsInfoCircle } from 'react-icons/bs';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,7 +11,7 @@ import StudentEnrollClasses from '../components/StudentEnrollClasses';
  import Sidebar from '../components/Sidebar';
  import Enroll from '../components/Enroll';
 
-const Dashboard = () => {
+const Students = () => {
  
   return (
     
@@ -42,8 +42,7 @@ const Dashboard = () => {
 
 
           <div>
-            <Outlet/>
-            {/* <Enroll/> */}
+            <Enroll />
           </div>
       
 
@@ -53,4 +52,4 @@ const Dashboard = () => {
 );
 };
 
-export default Dashboard;
+export default Students;

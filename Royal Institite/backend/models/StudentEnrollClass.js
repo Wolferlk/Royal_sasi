@@ -1,23 +1,21 @@
 const mongoose = require('mongoose');
 
-const { studentSchema } = require("./studentmodel");
-const { classSchema } = require("./Class");
-
-
 // Define the schema for the StudentEnrollClass collection
 const studentEnrollClassSchema = new mongoose.Schema({
-  Student: {
-    type: studentSchema,
-    required: true,
+  studentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Student',
+    required: true
   },
-  class: {
-    type: classSchema,
-    required: true,
+  classId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Class',
+    required: true
   },
   enrollmentDate: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+  }
 });
 
 // Create the StudentEnrollClass model
