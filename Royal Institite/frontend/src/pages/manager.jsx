@@ -27,8 +27,10 @@ const Students = () => {
       });
   }, []);
 
-  const filteredStudents = students.filter(student =>
-    student.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredStudents = students.filter(
+    (student) =>
+      student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      student._id.toString().toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleSearchInputChange = (event) => {
