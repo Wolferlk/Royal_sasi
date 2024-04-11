@@ -3,10 +3,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assets/headlogo.png';
+import Sidebar from '../components/Sidebar';
+import MarkAttendance from '../components/MarkAttendance';
 
 const student = () => {
   return (
     <div>
+        <div>
         <div className="container">
         <img src={logo} alt="Company Logo" /> 
         
@@ -25,8 +28,34 @@ const student = () => {
         Feel free to explore our pages and learn more about what we have to offer.
         If you have any questions or feedback, please don't hesitate to contact us.
       </p>
+
+      
       </center>
-    </div>
+      
+
+    
+ <Sidebar />
+ </div>
+
+ 
+ <MarkAttendance/>
+
+
+
+
+
+ 
+
+
+<div>
+
+   
+
+</div>
+
+
+</div>
+
   );
 }
 

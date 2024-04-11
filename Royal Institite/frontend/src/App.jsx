@@ -5,13 +5,14 @@ import logo from './assets/headlogo.png';
 import Manager from './pages/manager'; 
 import Student from './pages/student';
 import teacher from './pages/teacher';
+import test from './pages/test';
 
 
 
 
 const App = () => {
   return (
-    // <Router>
+    
       <div>
      
         <div>
@@ -23,32 +24,20 @@ const App = () => {
         <Link to="/" className="btn btn-primary mr-2">Home</Link>
         <Link to="/manager" className="btn btn-primary mr-2">Manager</Link>
         <Link to="/student" className="btn btn-primary mr-2">Student</Link>
-        <Link to="/teacher" className="btn btn-primary">Teacher</Link>
+        <Link to="/teacher" className="btn btn-primary mr-2">Teacher</Link>
+        <Link to="/test" className="btn btn-primary ">test</Link>
       </div>
 
         </div>
         
 
-        {/* <div className="container">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/" className="navbar-brand">Royal Institue</Link>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">Student</Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">Manager</Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div> */}
+       
 
         <Routes>
           <Route path="/manager" element={<Manager />} />
           <Route path="/student" element={<Student />} />
           <Route path="/teacher" element={<teacher />} />
+          <Route path="/test"    element={<test />} />
         </Routes>
       </div>
     // </Router>

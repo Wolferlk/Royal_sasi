@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import { Student } from "./models/studentmodel.js";
 import studentsroute from './routes/studentsroute.js';
 import enroll from './routes/enroll.js';
+
+
 import cors from 'cors'; // Import cors package
 
 const app = express();
@@ -16,9 +18,13 @@ app.get('/', (request, response) => {
     return response.status(234).send('welcome to MERN');
 });
 
-//new students add
+
 app.use('/student', studentsroute);
 app.use("/enroll", enroll);
+
+
+
+
 
 mongoose
     .connect(mongoDBURL)
