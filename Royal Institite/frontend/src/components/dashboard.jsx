@@ -37,12 +37,12 @@ const Students = () => {
     </div> 
 
     <div className="grid grid-cols-3">
-          <Sidebar />
+          
           </div>
 
 
           <div>
-            <Enroll />
+          
           </div>
       
 

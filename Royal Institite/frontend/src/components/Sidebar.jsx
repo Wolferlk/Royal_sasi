@@ -93,9 +93,9 @@ const Sidebar = () => {
                 ref={indicatorRef}
                 className="sidebar__menu__indicator"
                 style={{
-                    transform: `translateX(-50%) translateY({hig}px)`
+                    //transform: `translateX(-50%) translateY({hig}px)`
                     //transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`
-                     //transform: `translateX(-50%) translateY(125px)`
+                     transform: `translateX(-50%) translateY(65px)`
                 }}
             ></div>
             {
