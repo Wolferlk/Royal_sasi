@@ -38,8 +38,9 @@ const student = () => {
  </div>
 
  
- <MarkAttendance/>
-
+ <MarkAttendance/> 
+ {/* <Attendanceview/>  */}
+   
 
 
 
@@ -48,8 +49,8 @@ const student = () => {
 
 
 <div>
-
-   
+ {/* <Attendanceview/> 
+    */}
 
 </div>
 
