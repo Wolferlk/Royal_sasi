@@ -13,15 +13,13 @@ const attendanceSchema = new mongoose.Schema({
     required: true,
     index: true // Adding index for better performance
   },
-  present: {
-    type: Boolean,
-    required: true
-  },
+ 
   date: {
     type: Date,
     default: Date.now,
     index: true // Adding index for better performance
   }
+  
 });
 
 // Additional validation to ensure classId and studentId exist

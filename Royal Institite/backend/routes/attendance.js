@@ -28,6 +28,25 @@ router.post('/', async (req, res) => {
     console.error('Error marking attendance:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
-});
+})
+
+router.get('/attendance', async (req, res) => {
+  try {
+    const attendance = await Attendance.find().populate('classId studentId');
+    res.json(attendance);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+}
+
+
+
+ 
+
+
+
+
+
+);
 
 module.exports = router;
