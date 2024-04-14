@@ -7,6 +7,7 @@ import logo from '../assets/headlogo.png';
 import StudentCardEnroll from '../components/StudentCardEnroll';
 import Sidebar from '../components/Sidebar';
 import '../components/sasi.scss';
+import AllClasses from '../components/AllClasses';
 
 const Students = () => {
   const [students, setStudents] = useState([]);
@@ -117,13 +118,18 @@ const Students = () => {
               ) : (
                 <div>No students available</div>
               )}
+
+              
             </div>
           </div>
+         
 
           <div>
+          
             <div className='studentd'>
               {selectedStudent && <StudentCardEnroll studentId={selectedStudent} />}
             </div>
+            <AllClasses/>
           </div>
         </div>
       </div>
