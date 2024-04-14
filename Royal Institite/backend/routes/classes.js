@@ -1,12 +1,12 @@
 // routes/classRoutes.js
-const express = require('express');
-const router = express.Router();
-const Class = require('../models/Class');
+import { Router } from 'express';
+const router = Router();
+import { Classes } from '../models/Classes.js';
 
 // GET all classes
 router.get('/', async (req, res) => {
   try {
-    const classes = await Class.find();
+    const classes = await Classes.find();
     res.json(classes);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -22,7 +22,7 @@ router.get('/:id', getClass, (req, res) => {
 async function getClass(req, res, next) {
   let classItem;
   try {
-    classItem = await Class.findById(req.params.id);
+    classItem = await Classes.findById(req.params.id);
     if (classItem == null) {
       return res.status(404).json({ message: 'Class not found' });
     }
@@ -34,4 +34,4 @@ async function getClass(req, res, next) {
   next();
 }
 
-module.exports = router;
+export default router;
