@@ -54,7 +54,7 @@ const StudentCardEnroll = ({ studentId }) => {
                 <th>Time</th>
                 <th>Date</th>
                 <th>Unenroll</th>
-                <th>Edit</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -70,12 +70,13 @@ const StudentCardEnroll = ({ studentId }) => {
                     <td>{enrollment.time}</td>
                     <td>{enrollment.date}</td>
                     <td><button className="unenroll-button">Unenroll</button></td>
-                    <td><button className="edit-button">Edit</button></td>
+                    
                   </tr>
                 ))
               )}
             </tbody>
-          </table>
+          </table><center>
+          <button className="edit-button">Enroll To new Class</button></center>
         </div>
       </div>
     </div>
