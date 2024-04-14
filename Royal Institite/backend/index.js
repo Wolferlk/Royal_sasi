@@ -6,6 +6,7 @@ import studentsroute from './routes/studentsroute.js';
 import enroll from './routes/enroll.js';
 
 
+
 import cors from 'cors'; // Import cors package
 
 const app = express();

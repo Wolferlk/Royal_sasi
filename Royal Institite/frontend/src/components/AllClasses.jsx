@@ -47,7 +47,7 @@ const AllClasses = () => {
           {allClasses.map((classItem) => (
             <tr key={classItem._id}>
               <td>{classItem.name}</td>
-              <td>{classItem.teacher.name}</td> 
+              <td>{classItem.teacher}</td> 
               <td>{classItem.subject}</td>
               <td>{classItem.day}</td>
               <td>{classItem.time}</td>
