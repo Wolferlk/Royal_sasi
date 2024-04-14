@@ -1,7 +1,8 @@
 // routes/attendance.js
-const express = require('express');
-const router = express.Router();
-const Attendance = require('../models/Attendance');
+import { Router } from "express";
+const router = Router();
+import { Attendance } from "../models/Attendance.js";
+
 
 // POST route to mark attendance
 router.post('/', async (req, res) => {
@@ -39,14 +40,6 @@ router.get('/attendance', async (req, res) => {
   }
 }
 
-
-
- 
-
-
-
-
-
 );
 
-module.exports = router;
+export default router;

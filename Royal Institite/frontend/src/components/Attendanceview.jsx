@@ -10,7 +10,9 @@ function AttendanceTable() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('/api/attendance');
+        const response = await axios.get(
+          "http://localhost:5555/attendance"
+        );
         setAttendance(response.data);
         setLoading(false);
       } catch (error) {
@@ -39,7 +41,7 @@ function AttendanceTable() {
         </tr>
       </thead>
       <tbody>
-        {attendance.map((record) => (
+        {attendance?.map((record) => (
           <tr key={record._id}>
             <td>{record.classId?.name}</td>
             <td>{record.studentId?.name}</td>
