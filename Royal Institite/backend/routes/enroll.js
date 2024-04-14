@@ -52,4 +52,22 @@ router.post("/", async (request, response) => {
   }
 });
 
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const enrollmentId = req.params.id;
+    const enrollment = await StudentEnrollClass.findById(enrollmentId);
+
+    if (!enrollment) {
+      return res.status(404).send({ message: "Enrollment not found" });
+    }
+
+    await enrollment.remove();
+    return res.status(200).send({ message: "Enrollment deleted successfully" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send({ message: error.message });
+  }
+});
+
 export default router;

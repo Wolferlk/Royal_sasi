@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Spinner from './Spinner';
+import '../components/sasi.scss';
+
 
 const AllClasses = () => {
   const [allClasses, setAllClasses] = useState([]);
@@ -29,10 +31,27 @@ const AllClasses = () => {
     return <div>No classes found</div>;
   }
 
+
+//   const sampleData = [
+//     { name: 'Math', teacher: 'Mr. Smith', subject: 'Mathematics', day: 'Monday', time: '9:00 AM', grade: '10' },
+//     { name: 'Science', teacher: 'Ms. Johnson', subject: 'Science', day: 'Tuesday', time: '10:00 AM', grade: '11' },
+//     // Add more sample data as needed
+//   ];
+
   return (
     <div>
-      <h2>All Classes</h2>
-      <table>
+        <div className="card">
+        <div className="card-header">
+            <h2>All Classes</h2>
+            </div>
+            <div className="card-body">
+
+
+                <div>
+                    <p>kdsnosjfokjo</p>
+
+                </div>
+       <table>
         <thead>
           <tr>
             <th>Name</th>
@@ -55,7 +74,9 @@ const AllClasses = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+        </table> 
+      </div>
+    </div>
     </div>
   );
 };

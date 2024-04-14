@@ -29,6 +29,21 @@ const StudentCardEnroll = ({ studentId }) => {
     fetchData();
   }, [studentId]);
 
+  const handleUnenroll = async (enrollmentId) => {
+    try {
+      await axios.delete('http://localhost:5555/enroll/${enrollmentId}');
+      
+      // Refetch the enrolled classes after deletion
+      const enrollResponse = await axios.get(`http://localhost:5555/enroll/${studentId}`);
+      // Assuming the response data is an array of enrollments
+      setEnrolledClasses(enrollResponse.data); 
+    } catch (error) {
+      console.error('Error unenrolling:', error);
+    }
+  };
+  
+  
+
   return (
     <div className='stdcard'>
       <div className="card">
@@ -54,7 +69,7 @@ const StudentCardEnroll = ({ studentId }) => {
                 <th>Time</th>
                 <th>Date</th>
                 <th>Unenroll</th>
-                <th>Edit</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -69,13 +84,20 @@ const StudentCardEnroll = ({ studentId }) => {
                     <td>{enrollment.teacher}</td>
                     <td>{enrollment.time}</td>
                     <td>{enrollment.date}</td>
-                    <td><button className="unenroll-button">Unenroll</button></td>
-                    <td><button className="edit-button">Edit</button></td>
+                    
+                    <td> <button 
+                        className="btn btn-danger mr-2"
+                        onClick={() => handleUnenroll(enrollment._id)}
+                      >
+                        Unenroll
+                      </button></td>
+                    
                   </tr>
                 ))
               )}
             </tbody>
-          </table>
+          </table><center>
+          <button className="btn btn-primary mr-2">Enroll To new Class</button></center>
         </div>
       </div>
     </div>
