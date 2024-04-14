@@ -5,7 +5,7 @@ import { Student } from "./models/studentmodel.js";
 import studentsroute from "./routes/studentsroute.js";
 import enroll from "./routes/enroll.js";
 import attendance from "./routes/attendance.js";
-import classes from "./routes/classes.js;
+import classes from "./routes/classes.js";
 import cors from "cors"; // Import cors package
 
 
