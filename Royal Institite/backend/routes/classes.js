@@ -1,7 +1,7 @@
 // routes/classRoutes.js
 import { Router } from "express";
 const router = Router();
-import { Classes } from "../models/Classes";
+import { Classes } from "../models/Classes.js";
 
 // GET all classes
 router.get("/", async (req, res) => {
