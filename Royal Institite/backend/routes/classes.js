@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 
 // GET a specific class
 router.get("/:id", getClass, (req, res) => {
-  res.json(res.class);
+  res.json(res.Sclass);
 });
 
 // Middleware to get a specific class by ID
@@ -30,8 +30,23 @@ async function getClass(req, res, next) {
     return res.status(500).json({ message: err.message });
   }
 
-  res.class = classItem;
+  res.Sclass = classItem;
   next();
 }
+
+
+
+
+// POST a new class
+router.post("/", async (req, res) => {
+  const { name, teacher, subject, day, time, grade } = req.body;
+  try {
+    const newClass = new Classes({ name, teacher, subject, day, time, grade });
+    await newClass.save();
+    res.status(201).json(newClass);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
 
 export default router;
