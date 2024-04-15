@@ -34,14 +34,11 @@ async function getClass(req, res, next) {
   next();
 }
 
-
-
-
 // POST a new class
 router.post("/", async (req, res) => {
-  const { name, teacher, subject, day, time, grade } = req.body;
+  const { teacher, subject, day, time, grade, classid } = req.body;
   try {
-    const newClass = new Classes({ name, teacher, subject, day, time, grade });
+    const newClass = new Classes({ teacher, subject, day, time, grade, classid });
     await newClass.save();
     res.status(201).json(newClass);
   } catch (err) {

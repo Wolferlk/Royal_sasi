@@ -1,33 +1,35 @@
 import mongoose from "mongoose";
 
-
 const classSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
   },
+
   teacher: {
     type: String,
-    required: true
-
+    required: true,
   },
   subject: {
     type: String,
-    required: true
+    required: true,
   },
   day: {
     type: String,
-    required: true
+    required: true,
   },
   time: {
     type: String,
-    required: true
+    required: true,
   },
   grade: {
     type: Number,
-    required: true
-  }
+    required: true,
+  },
+  classid: {
+    type: String,
+    required: true,
+  },
 });
 
 export const Classes = mongoose.model("Classes", classSchema);
-

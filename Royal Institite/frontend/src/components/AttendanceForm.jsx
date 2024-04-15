@@ -9,9 +9,9 @@ const AttendanceForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5555/attendance', {
-        classId,
-        attendanceList: [{ studentId, present }]
+      const response = await axios.post("http://localhost:5555/attendance", {
+        classId: classId,
+        studentId: studentId,
       });
       console.log('Attendance submitted:', response.data);
       // Reset form after successful submission
@@ -22,6 +22,7 @@ const AttendanceForm = () => {
       console.error('Error submitting attendance:', error);
     }
   };
+
 
   return (
     <form onSubmit={handleSubmit}>

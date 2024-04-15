@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../components/sasi.scss';
 
-function AttendanceTable() {
+function AttendanceTable(props) {
   const [attendance, setAttendance] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const { attendanceList } = props;
+
+  console.log(attendanceList);
 
   useEffect(() => {
     async function fetchData() {
