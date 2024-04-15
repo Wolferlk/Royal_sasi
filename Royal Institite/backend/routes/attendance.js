@@ -1,8 +1,8 @@
 // routes/attendance.js
 import { Router } from "express";
-const router = Router();
 import { Attendance } from "../models/Attendance.js";
 
+const router = Router();
 
 // POST route to mark attendance
 router.post('/', async (req, res) => {
@@ -29,17 +29,16 @@ router.post('/', async (req, res) => {
     console.error('Error marking attendance:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
-})
+});
 
-router.get('/attendance', async (req, res) => {
+// GET route to fetch attendance records
+router.get('/', async (req, res) => {
   try {
     const attendance = await Attendance.find().populate('classId studentId');
     res.json(attendance);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-}
-
-);
+});
 
 export default router;

@@ -69,13 +69,10 @@ const MarkAttendance = () => {
 
   const handleStudentClick = (studentId) => {
     setSelectedStudent(studentId);
-  };
-
-  // Handle attendance marking
-  const handleAttendance = (studentId, present) => {
+    // Toggle attendance status for the clicked student
     const updatedAttendanceList = attendanceList.map(item => {
       if (item.studentId === studentId) {
-        return { ...item, present };
+        return { ...item, present: !item.present };
       }
       return item;
     });
@@ -137,7 +134,7 @@ const MarkAttendance = () => {
                   <td className='border border-slate-700 rounded-md text-center'>{student.name}</td>
                   <td className='rounded-md text-center'>
                     <Button variant="contained" endIcon={<SendIcon />} onClick={() => handleStudentClick(student._id)}>
-                      Mark Attendance
+                      {attendanceList.find(item => item.studentId === student._id)?.present ? 'Unmark Attendance' : 'Mark Attendance'}
                     </Button>
                   </td>
                 </tr>
