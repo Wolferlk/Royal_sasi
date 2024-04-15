@@ -41,14 +41,15 @@ function AttendanceTable() {
         </tr>
       </thead>
       <tbody>
-        {attendance?.map((record) => (
-          <tr key={record._id}>
-            <td>{record.classId?.name}</td>
-            <td>{record.studentId?.name}</td>
-            <td>{new Date(record.date).toLocaleDateString()}</td>
-          </tr>
-        ))}
-      </tbody>
+  {attendance?.map((record) => (
+    <tr key={record._id}>
+      <td>{record.classId ? record.classId.name : "Unknown Class"}</td>
+      <td>{record.studentId ? record.studentId.name : "Unknown Student"}</td>
+      <td>{new Date(record.date).toLocaleDateString()}</td>
+    </tr>
+  ))}
+</tbody>
+
     </table>
   );
 }

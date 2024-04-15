@@ -6,6 +6,7 @@ import logo from '../assets/headlogo.png';
 import Sidebar from '../components/Sidebar';
 import MarkAttendance from '../components/MarkAttendance';
 import AttendanceTable from '../components/Attendanceview';
+import AttendanceForm from '../components/AttendanceForm';
 
 const student = () => {
   return (
@@ -37,11 +38,15 @@ const student = () => {
       </div>
 
       <MarkAttendance />
-      <AttendanceTable />
+      {/* <AttendanceTable /> */}
 
       <div>
-        {/* <Attendanceview/>
-         */}
+         {/* <Attendanceview/> */}
+         <div className='Attendanceform'>
+      <h2>Mark Attendance</h2>
+      <AttendanceForm />
+    </div>
+         
       </div>
     </div>
   );
