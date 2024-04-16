@@ -7,12 +7,13 @@ import enroll from "./routes/enroll.js";
 import attendance from "./routes/attendance.js";
 import classes from "./routes/classes.js";
 import cors from "cors"; // Import cors package
+import studentenroll from './routes/studentenroll.js';
 
 
 const app = express();
 
 app.use(express.json());
-app.use(cors()); // Use cors middleware
+app.use(cors()); 
 
 app.get("/", (request, response) => {
   console.log(request);
@@ -23,6 +24,8 @@ app.use("/student", studentsroute);
 app.use("/enroll", enroll);
 app.use("/attendance", attendance);
 app.use("/class", classes);
+app.use("/studentenroll", studentenroll);
+
 
 mongoose
   .connect(mongoDBURL)

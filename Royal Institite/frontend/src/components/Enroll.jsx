@@ -13,7 +13,7 @@ import StudentEnrollClasses from '../components/StudentEnrollClasses';
  import Sidebar from '../components/Sidebar';
 import student from '../pages/student';
 
- const Students = () => {
+ const Enroll = () => {
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
@@ -138,4 +138,4 @@ import student from '../pages/student';
     );
 };
 
-export default student;
+export default Enroll;

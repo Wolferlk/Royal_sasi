@@ -41,13 +41,12 @@ const student = () => {
       {/* <AttendanceTable /> */}
 
       <div>
-         {/* <Attendanceview/> */}
-         <div className='Attendanceform'>
-      <h2>Mark Attendance</h2>
-      <AttendanceForm />
-    </div>
-         
+        <div className="Attendanceform">
+          <h2>Mark Attendance</h2>
+          <AttendanceForm />
+        </div>
       </div>
+      <AttendanceTable />
     </div>
   );
 }

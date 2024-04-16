@@ -5,64 +5,64 @@ import './sidebar.scss';
 const  hig = 0;
 
 const sidebarNavItems = [
-    
-
-    {
-        display: 'Dashboard',
-        icon: <i className='bx bx-home'></i>,
-        // to: './pages/manager',
-        section: 'Dashboard',
-        hig : 0 ,
-        
-    },
-    {
-        display: 'Additional Class',
-        icon: <i className='bx bx-star'></i>,
-        // to: './pages/manager',
-        hig : 65 ,
-        section: 'started'
-    },
-    {
-        display: 'Enrollments',
-        icon: <i className='bx '></i>,
-        // to: '/Enroll',
-        section: 'Enroll',
-        hig : "125" ,
-    },
-    {
-        display: 'Payments',
-        icon: <i className='bx bx-user'></i>,
-        // to: '/user',
-        section: 'Payments'
-    },
-    {
-        display: 'TimeTable',
-        icon: <i className='bx bx-receipt'></i>,
-        // to: '/order',
-        section: 'TimeTable'
-    },
-    {
-        display: 'Attendance',
-        icon: <i className='bx bx-user'></i>,
-        // to: '/user',
-        section: 'Payments'
-    },{
-        display: 'Salary',
-        icon: <i className='bx bx-user'></i>,
-        // to: '/user',
-        section: 'Payments'
-    },{
-        display: 'FeedBack',
-        icon: <i className='bx bx-user'></i>,
-        // to: '/user',
-        section: 'Payments'
-    },{
-        display: 'Profile',
-        icon: <i className='bx bx-user'></i>,
-        // to: '/user',
-        section: 'Payments'
-    },
-]
+  {
+    display: "Dashboard",
+    icon: <i className="bx bx-home"></i>,
+    to: "/manager/dashboard",
+    section: "Dashboard",
+    hig: 0,
+  },
+  {
+    display: "Additional Class",
+    icon: <i className="bx bx-star"></i>,
+    // to: './pages/manager',
+    hig: 65,
+    section: "started",
+  },
+  {
+    display: "Enrollments",
+    icon: <i className="bx "></i>,
+    to: "/manager",
+    section: "Enroll",
+    hig: "125",
+  },
+  {
+    display: "Payments",
+    icon: <i className="bx bx-user"></i>,
+    // to: '/user',
+    section: "Payments",
+  },
+  {
+    display: "TimeTable",
+    icon: <i className="bx bx-receipt"></i>,
+    // to: '/order',
+    section: "TimeTable",
+  },
+  {
+    display: "Attendance",
+    icon: <i className="bx bx-user"></i>,
+    to: "/student",
+    section: "Payments",
+  },
+  {
+    display: "Salary",
+    icon: <i className="bx bx-user"></i>,
+    // to: '/user',
+    section: "Payments",
+  },
+  {
+    display: "FeedBack",
+    icon: <i className="bx bx-user"></i>,
+    // to: '/user',
+    section: "Payments",
+  },
+  {
+    display: "Profile",
+    icon: <i className="bx bx-user"></i>,
+    // to: '/user',
+    section: "Payments",
+  },
+];
 
 const Sidebar = () => {
     const [activeIndex, setActiveIndex] = useState(0);

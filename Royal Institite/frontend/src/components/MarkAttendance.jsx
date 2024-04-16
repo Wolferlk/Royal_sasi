@@ -1,59 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
-import Spinner from '../components/Spinner';
-import { BsInfoCircle } from 'react-icons/bs';
-import AttendanceTable from './Attendanceview';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
+import Spinner from "../components/Spinner";
+import { BsInfoCircle } from "react-icons/bs";
+import AttendanceTable from "./Attendanceview";
 
 const MarkAttendance = () => {
   const [classes, setClasses] = useState([]);
-  const [selectedClass, setSelectedClass] = useState('');
+  const [selectedClass, setSelectedClass] = useState("");
   const [students, setStudents] = useState([]);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [attendanceList, setAttendanceList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [selectedStudent, setSelectedStudent] = useState(null);
 
   // Fetch classes
   useEffect(() => {
-    axios.get('http://localhost:5555/class')
-      .then(response => {
+    axios
+      .get("http://localhost:5555/class")
+      .then((response) => {
         setClasses(response.data);
       })
-      .catch(error => {
-        console.error('Error fetching classes:', error);
+      .catch((error) => {
+        console.error("Error fetching classes:", error);
       });
   }, []);
 
-  // Fetch students based on selected class
-  useEffect(() => {
-    if (selectedClass) {
-      axios.get(`http://localhost:5555/students?class=${selectedClass}`)
-        .then(response => {
-          setStudents(response.data);
-          // Update attendanceList when students are fetched
-          setAttendanceList(response.data.map(student => ({
-            studentId: student._id,
-            present: false // Default to false
-          })));
-        })
-        .catch(error => {
-          console.error('Error fetching students:', error);
-        });
-    }
-  }, [selectedClass]);
+  // // Fetch students based on selected class
+  // useEffect(() => {
+  //   if (selectedClass) {
+  //     axios
+  //       .get(`http://localhost:5555/students?class=${selectedClass}`)
+  //       .then((response) => {
+  //         setStudents(response.data);
+  //         // Update attendanceList when students are fetched
+  //         setAttendanceList(
+  //           response.data.map((student) => ({
+  //             studentId: student._id,
+  //             present: false, // Default to false
+  //           }))
+  //         );
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching students:", error);
+  //       });
+  //   }
+  // }, [selectedClass]);
 
   useEffect(() => {
     setLoading(true);
-    axios.get('http://localhost:5555/student')
+    axios
+      .get("http://localhost:5555/student")
       .then((response) => {
         setStudents(response.data.data);
         setLoading(false);
       })
       .catch((error) => {
-        console.error('Error fetching student data:', error);
+        console.error("Error fetching student data:", error);
         setLoading(false);
       });
   }, []);
@@ -68,26 +73,35 @@ const MarkAttendance = () => {
     setSearchQuery(event.target.value);
   };
 
-  const handleStudentClick = (studentId) => {
+  const handleStudentClick = async (studentId) => {
     setSelectedStudent(studentId);
 
     console.log(selectedStudent);
+    console.log(selectedClass);
 
-     axios
-       .get("http://localhost:5555/attendance/" + studentId)
-       .then((response) => {
-         setAttendanceList(response.data);
-         console.log(response.data);
-         setLoading(false);
-       })
-       .catch((error) => {
-         console.error("Error fetching student data:", error);
-         setLoading(false);
-       });
+    const postData = {
+      studentId: selectedStudent,
+      classId: selectedClass,
+    };
+
+    const response = await axios.post('http://your-api-url.com/api/enrollments', postData);
+
+    // Handle the response
+    console.log('POST request successful:', response.data);
+
+    axios
+      .get("http://localhost:5555/attendance/" + studentId)
+      .then((response) => {
+        setAttendanceList(response.data);
+        console.log(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching student data:", error);
+        setLoading(false);
+      });
 
     console.log(attendanceList);
-
-   
 
     // axios
     //   .post("http://localhost:5555/class", postData)
@@ -109,23 +123,24 @@ const MarkAttendance = () => {
     // setAttendanceList(updatedAttendanceList);
   };
 
-   useEffect(() => {
-     console.log(selectedStudent);
-   }, [selectedStudent]);
+  useEffect(() => {
+    console.log(selectedStudent);
+  }, [selectedStudent]);
 
   // Submit attendance
   const submitAttendance = () => {
     // Implement logic to submit attendance data to backend
-    axios.post('http://localhost:5555/attendance', {
-      classId: selectedClass,
-      attendanceList
-    })
-    .then(response => {
-      console.log('Attendance submitted:', response.data);
-    })
-    .catch(error => {
-      console.error('Error submitting attendance:', error);
-    });
+    axios
+      .post("http://localhost:5555/attendance", {
+        classId: selectedClass,
+        attendanceList,
+      })
+      .then((response) => {
+        console.log("Attendance submitted:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error submitting attendance:", error);
+      });
   };
 
   return (

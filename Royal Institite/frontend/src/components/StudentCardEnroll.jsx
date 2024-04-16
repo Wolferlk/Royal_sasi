@@ -3,7 +3,7 @@ import pp from '../assets/icons8-user.gif';
 import axios from 'axios';
 import '../components/sasi.scss';
 
-const StudentCardEnroll = ({ studentId }) => {
+const StudentCardEnroll = ({ studentId, setSelectedEnroll }) => {
   const [studentData, setStudentData] = useState(null);
   const [enrolledClasses, setEnrolledClasses] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -12,16 +12,20 @@ const StudentCardEnroll = ({ studentId }) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const studentResponse = await axios.get(`http://localhost:5555/student/${studentId}`);
+        const studentResponse = await axios.get(
+          `http://localhost:5555/student/${studentId}`
+        );
         setStudentData(studentResponse.data.data);
 
-        const enrollResponse = await axios.get(`http://localhost:5555/enroll/${studentId}`);
+        const enrollResponse = await axios.get(
+          `http://localhost:5555/enroll/${studentId}`
+        );
 
         setEnrolledClasses(enrollResponse.data);
         setLoading(false);
         console.log(enrolledClasses);
       } catch (error) {
-        console.error('Error fetching student data:', error);
+        console.error("Error fetching student data:", error);
         setLoading(false);
       }
     };
@@ -31,33 +35,43 @@ const StudentCardEnroll = ({ studentId }) => {
 
   const handleUnenroll = async (enrollmentId) => {
     try {
-      await axios.delete('http://localhost:5555/enroll/${enrollmentId}');
-      
+      await axios.delete("http://localhost:5555/enroll/${enrollmentId}");
+
       // Refetch the enrolled classes after deletion
-      const enrollResponse = await axios.get(`http://localhost:5555/enroll/${studentId}`);
+      const enrollResponse = await axios.get(
+        `http://localhost:5555/enroll/${studentId}`
+      );
       // Assuming the response data is an array of enrollments
-      setEnrolledClasses(enrollResponse.data); 
+      setEnrolledClasses(enrollResponse.data);
     } catch (error) {
-      console.error('Error unenrolling:', error);
+      console.error("Error unenrolling:", error);
     }
   };
-  
-  
 
   return (
-    <div className='stdcard'>
+    <div className="stdcard">
       <div className="card">
         <div className="card-header">
-          <h2>Student Id: {studentId}, {studentData ? studentData.id : ''}</h2>
+          <h2>
+            Student Id: {studentId}, {studentData ? studentData.id : ""}
+          </h2>
         </div>
         <div className="card-body">
           <img src={pp} alt="Student" className="student-image" />
           {studentData && (
-            <div className='dtlis'>
-              <p><strong>Student Name:</strong> {studentData.name}</p>
-              <p><strong>ID Number:</strong> {studentData.idnum}</p>
-              <p><strong>Grade:</strong> {studentData.grade}</p>
-              <p><strong>School:</strong> {studentData.school}</p>
+            <div className="dtlis">
+              <p>
+                <strong>Student Name:</strong> {studentData.name}
+              </p>
+              <p>
+                <strong>ID Number:</strong> {studentData.idnum}
+              </p>
+              <p>
+                <strong>Grade:</strong> {studentData.grade}
+              </p>
+              <p>
+                <strong>School:</strong> {studentData.school}
+              </p>
             </div>
           )}
 
@@ -69,7 +83,6 @@ const StudentCardEnroll = ({ studentId }) => {
                 <th>Time</th>
                 <th>Date</th>
                 <th>Unenroll</th>
-                
               </tr>
             </thead>
             <tbody>
@@ -84,20 +97,29 @@ const StudentCardEnroll = ({ studentId }) => {
                     <td>{enrollment.teacher}</td>
                     <td>{enrollment.time}</td>
                     <td>{enrollment.date}</td>
-                    
-                    <td> <button 
+
+                    <td>
+                      {" "}
+                      <button
                         className="btn btn-danger mr-2"
                         onClick={() => handleUnenroll(enrollment._id)}
                       >
                         Unenroll
-                      </button></td>
-                    
+                      </button>
+                    </td>
                   </tr>
                 ))
               )}
             </tbody>
-          </table><center>
-          <button className="btn btn-primary mr-2">Enroll To new Class</button></center>
+          </table>
+          <center>
+            <button
+              onClick={() => setSelectedEnroll(true)}
+              className="btn btn-primary mr-2"
+            >
+              Enroll To new Class
+            </button>
+          </center>
         </div>
       </div>
     </div>

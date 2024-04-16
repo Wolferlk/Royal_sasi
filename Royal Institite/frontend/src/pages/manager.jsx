@@ -9,12 +9,15 @@ import Sidebar from '../components/Sidebar';
 import '../components/sasi.scss';
 import AllClasses from '../components/AllClasses';
 import Enrollnew from '../components/Enrollnew';
+import { Link } from 'react-router-dom';
+import Enroll from "../components/Enroll";
 
 const Students = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStudent, setSelectedStudent] = useState(null);
+
 
   useEffect(() => {
     setLoading(true);
@@ -45,7 +48,7 @@ const Students = () => {
 
   return (
     <div>
-      <div className='logo'>
+      <div className="logo">
         <img src={logo} alt="Company Logo" />
       </div>
 
@@ -53,18 +56,10 @@ const Students = () => {
         <Sidebar />
       </div>
 
-
       <div>
-
-
-      <Enrollnew />
+        <Enrollnew />
+        {/* <Enroll/> */}
       </div>
-
-     
-
-
-
-
     </div>
   );
 };
